@@ -11,9 +11,9 @@ import {
   Mail,
   MapPin,
   ChevronRight,
+  ChevronDown,
   ExternalLink,
-  Flame,
-  ArrowRight,
+  ShieldCheck,
   Grid,
 } from 'lucide-react';
 import { Category, SiteSettings } from '../types';
@@ -36,6 +36,7 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenSearch,
 }) => {
   const [menuDrawerOpen, setMenuDrawerOpen] = useState(false);
+  const [categoriesAccordionOpen, setCategoriesAccordionOpen] = useState(true);
 
   const handleNav = (path: string) => {
     onNavigate(path);
@@ -59,7 +60,7 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className="sticky top-0 z-40 bg-[#251C17] text-[#FAF6F0] border-b border-[#F4D9A0]/20 shadow-md">
       {/* Sleek, Minimal Single-Tier Navigation Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 backdrop-blur-md">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           
           {/* 1. Minimal Brand: Tilak Logo + Just "Satarupa Enterprise" */}
@@ -69,7 +70,7 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <TilakLogo size="md" className="group-hover:scale-105 transition-transform duration-300" />
             <div className="flex flex-col">
-              <span className="font-serif text-2xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-[#FAF6F0] group-hover:text-[#F4D9A0] transition-colors leading-none">
+              <span className="font-serif text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-[#FAF6F0] group-hover:text-[#F4D9A0] transition-colors leading-none">
                 Satarupa <span className="text-[#F4D9A0]">Enterprise</span>
               </span>
             </div>
@@ -88,7 +89,7 @@ export const Header: React.FC<HeaderProps> = ({
                 <button
                   key={stream.slug}
                   onClick={() => handleNav(streamPath)}
-                  className={`px-3.5 py-2 rounded-full text-xs xl:text-sm font-medium transition-all duration-200 cursor-pointer ${
+                  className={`px-3.5 py-2 rounded-full text-xs xl:text-sm font-medium transition-all duration-200 cursor-pointer min-h-[44px] flex items-center ${
                     isActive
                       ? 'text-[#221302] bg-[#F4D9A0] font-bold shadow-xs'
                       : 'text-[#FAF6F0]/90 hover:text-[#F4D9A0] hover:bg-white/5'
@@ -100,14 +101,14 @@ export const Header: React.FC<HeaderProps> = ({
             })}
           </nav>
 
-          {/* 3. Controls & "The 3 Lines" (Where anyone can find all sections) */}
-          <div className="flex items-center gap-2.5 sm:gap-3">
+          {/* 3. Controls & Global 3-Line Hamburger Menu */}
+          <div className="flex items-center gap-2.5 sm:gap-3.5">
             {/* Search Trigger */}
             {onOpenSearch && (
               <button
                 onClick={onOpenSearch}
                 aria-label="Search showcase products"
-                className="p-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-[#F4D9A0]/30 text-[#F4D9A0] hover:text-white transition-all cursor-pointer"
+                className="w-11 h-11 rounded-full bg-white/5 hover:bg-white/10 border border-[#F4D9A0]/30 text-[#F4D9A0] hover:text-white transition-all cursor-pointer flex items-center justify-center min-w-[44px] min-h-[44px]"
                 title="Search items"
               >
                 <Search className="w-4 h-4" />
@@ -126,18 +127,17 @@ export const Header: React.FC<HeaderProps> = ({
               </LuxuryButton>
             </div>
 
-            {/* The 3 Lines Menu Button (All Sections Directory Trigger) */}
-            <button
+            {/* Global 3-Line Hamburger Menu Button (icon-square 3D gold-rimmed style) */}
+            <LuxuryButton
+              variant="burnt-amber"
+              shape="icon-square"
               onClick={() => setMenuDrawerOpen(true)}
-              aria-label="Open All Sections Menu"
-              className="group flex items-center gap-2 px-3 sm:px-3.5 py-2 rounded-full bg-[#3A2D24] hover:bg-[#4E3D31] border border-[#F4D9A0]/40 hover:border-[#F4D9A0] text-[#F4D9A0] transition-all cursor-pointer shadow-sm"
-              title="Browse all sections & categories"
+              title="Open Navigation Menu"
+              ariaLabel="Open Navigation Menu"
+              className="shrink-0"
             >
-              <Menu className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              <span className="hidden md:inline text-xs font-bold tracking-wider uppercase text-[#FAF6F0] group-hover:text-[#F4D9A0]">
-                All Sections
-              </span>
-            </button>
+              <Menu className="w-5 h-5 text-[#FFF8EA]" />
+            </LuxuryButton>
           </div>
         </div>
       </div>
@@ -147,14 +147,14 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="fixed inset-0 z-50 flex justify-end">
           {/* Backdrop */}
           <div
-            className="fixed inset-0 bg-black/70 backdrop-blur-xs transition-opacity duration-300"
+            className="fixed inset-0 bg-black/75 backdrop-blur-sm transition-opacity duration-300"
             onClick={() => setMenuDrawerOpen(false)}
           />
 
           {/* Directory Drawer Panel */}
           <div className="relative w-full max-w-md bg-[#241B17] text-[#FAF6F0] h-screen shadow-2xl flex flex-col z-10 border-l border-[#F4D9A0]/25 overflow-y-auto">
             {/* Drawer Header */}
-            <div className="p-5 border-b border-[#F4D9A0]/20 flex items-center justify-between bg-[#2C211C] sticky top-0 z-20">
+            <div className="p-4 sm:p-5 border-b border-[#F4D9A0]/20 flex items-center justify-between bg-[#2C211C] sticky top-0 z-20">
               <div
                 onClick={() => handleNav('/')}
                 className="flex items-center gap-3 cursor-pointer group select-none"
@@ -164,16 +164,19 @@ export const Header: React.FC<HeaderProps> = ({
                   Satarupa <span className="text-[#F4D9A0]">Enterprise</span>
                 </span>
               </div>
-              <button
+              <LuxuryButton
+                variant="dark-espresso"
+                shape="icon-square"
                 onClick={() => setMenuDrawerOpen(false)}
-                aria-label="Close directory menu"
-                className="p-2 rounded-full text-[#F4D9A0] hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                title="Close directory menu"
+                ariaLabel="Close directory menu"
+                className="!w-9 !h-9 !min-w-[36px] !min-h-[36px]"
               >
-                <X className="w-5 h-5" />
-              </button>
+                <X className="w-4 h-4 text-[#F4D9A0]" />
+              </LuxuryButton>
             </div>
 
-            <div className="p-6 space-y-7">
+            <div className="p-4 sm:p-6 space-y-6">
               {/* Search Quick Action */}
               {onOpenSearch && (
                 <button
@@ -181,7 +184,7 @@ export const Header: React.FC<HeaderProps> = ({
                     setMenuDrawerOpen(false);
                     onOpenSearch();
                   }}
-                  className="w-full py-2.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 border border-[#F4D9A0]/25 text-left text-xs text-[#FAF6F0]/80 flex items-center justify-between transition-colors cursor-pointer"
+                  className="w-full min-h-[44px] py-2.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 border border-[#F4D9A0]/25 text-left text-xs text-[#FAF6F0]/80 flex items-center justify-between transition-colors cursor-pointer"
                 >
                   <span className="flex items-center gap-2">
                     <Search className="w-4 h-4 text-[#F4D9A0]" />
@@ -191,121 +194,137 @@ export const Header: React.FC<HeaderProps> = ({
                 </button>
               )}
 
-              {/* Section 1: All Product Streams & Categories */}
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#F4D9A0] flex items-center gap-1.5">
-                    <Grid className="w-3.5 h-3.5 text-[#C8792C]" />
-                    <span>Main Product Streams ({categories.length})</span>
-                  </span>
-                  <button
-                    onClick={() => handleNav('/categories')}
-                    className="text-[11px] text-[#F4D9A0]/80 hover:text-[#F4D9A0] underline"
-                  >
-                    View All Hub
-                  </button>
-                </div>
-
-                <div className="space-y-1.5">
-                  {categories.map((cat) => (
-                    <div
-                      key={cat.id}
-                      className="rounded-xl p-3 bg-white/5 hover:bg-white/10 border border-[#F4D9A0]/15 hover:border-[#F4D9A0]/40 transition-all"
-                    >
-                      <button
-                        onClick={() => handleNav(`/products?category=${cat.slug}`)}
-                        className="w-full flex items-center justify-between text-left group cursor-pointer"
-                      >
-                        <span className="font-serif font-bold text-sm text-[#FAF6F0] group-hover:text-[#F4D9A0] transition-colors">
-                          {cat.name}
-                        </span>
-                        <ChevronRight className="w-4 h-4 text-[#F4D9A0]/60 group-hover:translate-x-1 transition-transform" />
-                      </button>
-
-                      {/* Nested subcategory tags */}
-                      {cat.subcategories && cat.subcategories.length > 0 && (
-                        <div className="mt-2 flex flex-wrap gap-1.5 pt-2 border-t border-white/5">
-                          {cat.subcategories.slice(0, 4).map((sub) => (
-                            <button
-                              key={sub}
-                              onClick={() =>
-                                handleNav(
-                                  `/products?category=${cat.slug}&subcategory=${encodeURIComponent(
-                                    sub
-                                  )}`
-                                )
-                              }
-                              className="text-[11px] px-2.5 py-0.5 rounded-md bg-[#3A2D24] hover:bg-[#F4D9A0] text-[#F4D9A0] hover:text-[#221302] transition-colors cursor-pointer"
-                            >
-                              {sub}
-                            </button>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Section 2: Explore All Sections */}
-              <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#F4D9A0] block mb-3 flex items-center gap-1.5">
-                  <Layers className="w-3.5 h-3.5 text-[#C8792C]" />
-                  <span>Key Site Sections</span>
+              {/* Page Links: 1. Home, 2. Products, 4. Blog, 5. Contact */}
+              <div className="space-y-1">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#F4D9A0]/70 block px-2 mb-1.5">
+                  Main Navigation
                 </span>
-                <div className="grid grid-cols-1 gap-1">
-                  <button
-                    onClick={() => handleNav('/')}
-                    className="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm text-left font-medium hover:bg-white/10 transition-colors cursor-pointer text-[#FAF6F0]"
-                  >
-                    <Sparkles className="w-4 h-4 text-[#F4D9A0]" />
-                    <span>Home Showcase</span>
-                  </button>
 
-                  <button
-                    onClick={() => handleNav('/products')}
-                    className="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm text-left font-medium hover:bg-white/10 transition-colors cursor-pointer text-[#FAF6F0]"
-                  >
-                    <ShoppingBag className="w-4 h-4 text-[#F4D9A0]" />
-                    <span>Complete Product Catalog &amp; Filter</span>
-                  </button>
+                {/* 1. Home */}
+                <button
+                  onClick={() => handleNav('/')}
+                  className={`w-full min-h-[44px] flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm text-left font-medium transition-colors cursor-pointer ${
+                    currentPath === '/'
+                      ? 'bg-[#3A2D24] text-[#F4D9A0] font-semibold border border-[#F4D9A0]/30'
+                      : 'hover:bg-white/5 text-[#FAF6F0]'
+                  }`}
+                >
+                  <Sparkles className="w-4 h-4 text-[#F4D9A0]" />
+                  <span>1. Home Showcase</span>
+                </button>
 
-                  <button
-                    onClick={() => handleNav('/products?mostSelling=1')}
-                    className="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm text-left font-medium hover:bg-white/10 transition-colors cursor-pointer text-[#FAF6F0]"
-                  >
-                    <Flame className="w-4 h-4 text-[#C8792C]" />
-                    <span>Most Selling Architectural Pieces</span>
-                  </button>
+                {/* 2. All Products Catalog */}
+                <button
+                  onClick={() => handleNav('/products')}
+                  className={`w-full min-h-[44px] flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm text-left font-medium transition-colors cursor-pointer ${
+                    currentPath.startsWith('/products') && !currentPath.includes('category=')
+                      ? 'bg-[#3A2D24] text-[#F4D9A0] font-semibold border border-[#F4D9A0]/30'
+                      : 'hover:bg-white/5 text-[#FAF6F0]'
+                  }`}
+                >
+                  <ShoppingBag className="w-4 h-4 text-[#F4D9A0]" />
+                  <span>2. All Products Catalog</span>
+                </button>
 
-                  <button
-                    onClick={() => handleNav('/categories')}
-                    className="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm text-left font-medium hover:bg-white/10 transition-colors cursor-pointer text-[#FAF6F0]"
-                  >
-                    <Layers className="w-4 h-4 text-[#F4D9A0]" />
-                    <span>Categories Overview Hub</span>
-                  </button>
+                {/* 3. Categories Hub with Expandable Accordion */}
+                <div className="rounded-xl border border-[#F4D9A0]/20 bg-white/5 overflow-hidden">
+                  <div className="flex items-center justify-between p-3.5 min-h-[44px]">
+                    <button
+                      onClick={() => handleNav('/categories')}
+                      className="flex items-center gap-3 text-sm text-left font-medium text-[#FAF6F0] hover:text-[#F4D9A0] transition-colors cursor-pointer flex-1"
+                    >
+                      <Layers className="w-4 h-4 text-[#F4D9A0]" />
+                      <span>3. Categories Hub</span>
+                      <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-[#3A2D24] text-[#F4D9A0] font-bold">
+                        {categories.length}
+                      </span>
+                    </button>
+                    <button
+                      onClick={() => setCategoriesAccordionOpen(!categoriesAccordionOpen)}
+                      aria-label="Toggle categories accordion"
+                      className="p-1 rounded-md text-[#F4D9A0] hover:bg-white/10 transition-colors cursor-pointer"
+                    >
+                      {categoriesAccordionOpen ? (
+                        <ChevronDown className="w-4 h-4" />
+                      ) : (
+                        <ChevronRight className="w-4 h-4" />
+                      )}
+                    </button>
+                  </div>
 
-                  <button
-                    onClick={() => handleNav('/blog')}
-                    className="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm text-left font-medium hover:bg-white/10 transition-colors cursor-pointer text-[#FAF6F0]"
-                  >
-                    <BookOpen className="w-4 h-4 text-[#F4D9A0]" />
-                    <span>Craft Journal &amp; Architectural Blog</span>
-                  </button>
+                  {/* Expandable Categories Accordion */}
+                  {categoriesAccordionOpen && (
+                    <div className="px-3 pb-3 pt-1 border-t border-white/5 space-y-1.5 animate-fadeIn">
+                      {categories.map((cat) => (
+                        <div
+                          key={cat.id}
+                          className="rounded-lg p-2.5 bg-[#1F1713] border border-[#F4D9A0]/10 hover:border-[#F4D9A0]/30 transition-all"
+                        >
+                          <button
+                            onClick={() => handleNav(`/products?category=${cat.slug}`)}
+                            className="w-full min-h-[36px] flex items-center justify-between text-left group cursor-pointer"
+                          >
+                            <span className="font-serif font-bold text-xs sm:text-sm text-[#FAF6F0] group-hover:text-[#F4D9A0] transition-colors">
+                              {cat.name}
+                            </span>
+                            <ChevronRight className="w-3.5 h-3.5 text-[#F4D9A0]/60 group-hover:translate-x-1 transition-transform" />
+                          </button>
 
-                  <button
-                    onClick={() => handleNav('/contact')}
-                    className="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm text-left font-medium hover:bg-white/10 transition-colors cursor-pointer text-[#FAF6F0]"
-                  >
-                    <Mail className="w-4 h-4 text-[#F4D9A0]" />
-                    <span>Custom Project Consultation</span>
-                  </button>
+                          {/* Nested Subcategories */}
+                          {cat.subcategories && cat.subcategories.length > 0 && (
+                            <div className="mt-1.5 flex flex-wrap gap-1 pt-1.5 border-t border-white/5">
+                              {cat.subcategories.slice(0, 4).map((sub) => (
+                                <button
+                                  key={sub}
+                                  onClick={() =>
+                                    handleNav(
+                                      `/products?category=${cat.slug}&subcategory=${encodeURIComponent(
+                                        sub
+                                      )}`
+                                    )
+                                  }
+                                  className="text-[10px] px-2 py-0.5 rounded-md bg-[#2D211A] hover:bg-[#F4D9A0] text-[#F4D9A0] hover:text-[#221302] transition-colors cursor-pointer"
+                                >
+                                  {sub}
+                                </button>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
+
+                {/* 4. SEO Blogs */}
+                <button
+                  onClick={() => handleNav('/blog')}
+                  className={`w-full min-h-[44px] flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm text-left font-medium transition-colors cursor-pointer ${
+                    currentPath.startsWith('/blog')
+                      ? 'bg-[#3A2D24] text-[#F4D9A0] font-semibold border border-[#F4D9A0]/30'
+                      : 'hover:bg-white/5 text-[#FAF6F0]'
+                  }`}
+                >
+                  <BookOpen className="w-4 h-4 text-[#F4D9A0]" />
+                  <span>4. SEO Blogs &amp; Craft Journal</span>
+                </button>
+
+                {/* 5. Contact / Custom Enquiry */}
+                <button
+                  onClick={() => handleNav('/contact')}
+                  className={`w-full min-h-[44px] flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm text-left font-medium transition-colors cursor-pointer ${
+                    currentPath === '/contact'
+                      ? 'bg-[#3A2D24] text-[#F4D9A0] font-semibold border border-[#F4D9A0]/30'
+                      : 'hover:bg-white/5 text-[#FAF6F0]'
+                  }`}
+                >
+                  <Mail className="w-4 h-4 text-[#F4D9A0]" />
+                  <span>5. Contact &amp; Custom Enquiry</span>
+                </button>
               </div>
 
-              {/* Section 3: Workshop & Direct Concierge */}
-              <div className="p-4 rounded-xl bg-white/5 border border-[#F4D9A0]/20 space-y-3">
+              {/* Workshop & Direct Concierge */}
+              <div className="p-3.5 rounded-xl bg-white/5 border border-[#F4D9A0]/20 space-y-2.5">
                 <div className="flex items-center justify-between">
                   <span className="text-[11px] font-bold uppercase tracking-wider text-[#F4D9A0]">
                     Workshop &amp; Showroom
@@ -334,16 +353,33 @@ export const Header: React.FC<HeaderProps> = ({
                 </div>
               </div>
 
-              {/* Direct Quote Action */}
-              <div className="pt-2">
+              {/* Bespoke Quote CTA */}
+              <div className="pt-1">
                 <LuxuryButton
                   variant="burnt-amber"
                   shape="wide"
                   size="md"
                   onClick={() => handleNav('/contact')}
-                  className="w-full"
+                  className="w-full min-h-[44px]"
                 >
                   Request Bespoke Quotation
+                </LuxuryButton>
+              </div>
+
+              {/* 6. Admin Panel (Clearly visible link/button at the bottom for instant access) */}
+              <div className="pt-2 border-t border-[#F4D9A0]/20">
+                <div className="text-[11px] font-bold uppercase tracking-wider text-[#F4D9A0]/70 mb-2 px-1">
+                  Atelier Control
+                </div>
+                <LuxuryButton
+                  variant="dark-espresso"
+                  shape="wide"
+                  size="md"
+                  onClick={() => handleNav('/admin')}
+                  className="w-full flex items-center justify-center gap-2 border border-[#D4A359] min-h-[44px]"
+                  icon={<ShieldCheck className="w-4 h-4 text-[#F4D9A0]" />}
+                >
+                  6. Open Admin Panel
                 </LuxuryButton>
               </div>
             </div>

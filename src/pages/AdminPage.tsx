@@ -592,7 +592,7 @@ export const AdminPage: React.FC<AdminPageProps> = ({
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as AdminTab)}
-                className={`px-4 py-3 rounded-t-xl flex items-center gap-2 whitespace-nowrap transition-all cursor-pointer border-t-2 ${
+                className={`px-4 py-3 rounded-t-xl flex items-center gap-2 whitespace-nowrap transition-all cursor-pointer border-t-2 min-h-[44px] ${
                   isActive
                     ? 'bg-white text-[#5B4632] border-[#C8792C] shadow-xs'
                     : 'text-[#5A4E46] border-transparent hover:text-[#2C221E] hover:bg-white/50'
@@ -637,22 +637,80 @@ export const AdminPage: React.FC<AdminPageProps> = ({
                 No customer enquiries yet. Test by submitting an inquiry from any product page or contact form!
               </div>
             ) : (
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs border border-[#E8DFD5] rounded-xl overflow-hidden">
-                  <thead className="bg-[#FAF6F0] text-[#5B4632] uppercase tracking-wider font-semibold border-b border-[#E8DFD5]">
-                    <tr>
-                      <th className="p-3.5">Customer and Contact</th>
-                      <th className="p-3.5">Product / Project</th>
-                      <th className="p-3.5">Inquiry Message</th>
-                      <th className="p-3.5">Date</th>
-                      <th className="p-3.5">Status</th>
-                      <th className="p-3.5 text-right">Instant WhatsApp</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-[#E8DFD5]">
-                    {enquiriesList.map((enq) => {
-                      const cleanPhone = enq.phone.replace(/[^0-9]/g, '');
-                      const replyMessage = `Hello ${enq.customerName}! Thank you for your inquiry regarding "${enq.productTitle || 'bespoke architectural furnishings'}" on ArtisanCraft. How may we assist with your specifications?`;
+              <>
+                {/* Mobile Stacked Cards for Enquiries */}
+                <div className="sm:hidden space-y-3">
+                  {enquiriesList.map((enq) => {
+                    const cleanPhone = enq.phone.replace(/[^0-9]/g, '');
+                    const replyMessage = `Hello ${enq.customerName}! Thank you for your inquiry regarding "${enq.productTitle || 'bespoke architectural furnishings'}" on Satarupa Enterprise. How may we assist with your specifications?`;
+                    const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(replyMessage)}`;
+
+                    return (
+                      <div key={enq.id} className="p-4 rounded-xl border border-[#E8DFD5] bg-[#FAF6F0]/40 space-y-3 shadow-xs">
+                        <div className="flex items-start justify-between gap-2">
+                          <div>
+                            <span className="font-bold text-sm text-[#2C221E] block">{enq.customerName}</span>
+                            <span className="text-xs text-[#5B4632] block font-mono">{enq.phone}</span>
+                            {enq.email && <span className="text-xs text-[#5A4E46] block">{enq.email}</span>}
+                          </div>
+                          <select
+                            value={enq.status}
+                            onChange={(e) => handleUpdateStatus(enq.id, e.target.value as any)}
+                            className="px-2.5 py-1.5 rounded-lg text-xs font-semibold border bg-white min-h-[38px]"
+                          >
+                            <option value="new">New</option>
+                            <option value="contacted">Contacted</option>
+                            <option value="closed">Closed</option>
+                          </select>
+                        </div>
+
+                        <div className="text-xs text-[#5A4E46] bg-white p-3 rounded-lg border border-[#E8DFD5]/70 space-y-1">
+                          <span className="font-semibold text-[#2C221E] block">
+                            {enq.productTitle || 'Custom Commission'}
+                          </span>
+                          <p className="line-clamp-3 leading-relaxed">{enq.message}</p>
+                        </div>
+
+                        <div className="flex items-center justify-between pt-1">
+                          <span className="text-[11px] text-[#5A4E46]">
+                            {new Date(enq.createdAt).toLocaleDateString('en-IN', {
+                              month: 'short',
+                              day: 'numeric',
+                              year: 'numeric',
+                            })}
+                          </span>
+                          <a
+                            href={whatsappUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-[#25D366] text-white font-semibold text-xs min-h-[44px]"
+                          >
+                            <MessageCircle className="w-4 h-4" />
+                            <span>Reply WhatsApp</span>
+                          </a>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Desktop & Tablet Table */}
+                <div className="hidden sm:block overflow-x-auto">
+                  <table className="w-full text-left text-xs border border-[#E8DFD5] rounded-xl overflow-hidden min-w-[700px]">
+                    <thead className="bg-[#FAF6F0] text-[#5B4632] uppercase tracking-wider font-semibold border-b border-[#E8DFD5]">
+                      <tr>
+                        <th className="p-3.5">Customer and Contact</th>
+                        <th className="p-3.5">Product / Project</th>
+                        <th className="p-3.5">Inquiry Message</th>
+                        <th className="p-3.5">Date</th>
+                        <th className="p-3.5">Status</th>
+                        <th className="p-3.5 text-right">Instant WhatsApp</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-[#E8DFD5]">
+                      {enquiriesList.map((enq) => {
+                        const cleanPhone = enq.phone.replace(/[^0-9]/g, '');
+                        const replyMessage = `Hello ${enq.customerName}! Thank you for your inquiry regarding "${enq.productTitle || 'bespoke architectural furnishings'}" on Satarupa Enterprise. How may we assist with your specifications?`;
                       const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(replyMessage)}`;
 
                       return (
@@ -716,7 +774,8 @@ export const AdminPage: React.FC<AdminPageProps> = ({
                   </tbody>
                 </table>
               </div>
-            )}
+            </>
+          )}
           </div>
         )}
 
@@ -763,9 +822,45 @@ export const AdminPage: React.FC<AdminPageProps> = ({
               </button>
             </div>
 
-            {/* Products Table */}
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs border border-[#E8DFD5] rounded-xl overflow-hidden">
+            {/* Mobile Stacked Cards for Products */}
+            <div className="sm:hidden space-y-3">
+              {products.map((p) => (
+                <div key={p.id} className="p-3.5 rounded-xl border border-[#E8DFD5] bg-[#FAF6F0]/40 flex items-center justify-between gap-3 shadow-xs">
+                  <img
+                    src={p.images?.[0] || ''}
+                    alt={p.title}
+                    className="w-14 h-14 rounded-lg object-cover border border-[#E8DFD5] shrink-0"
+                  />
+                  <div className="flex-1 min-w-0">
+                    <span className="font-bold text-xs text-[#2C221E] block truncate">{p.title}</span>
+                    <span className="text-[11px] text-[#C8792C] block truncate">{p.categoryName} &bull; {p.subcategory}</span>
+                    <span className="text-xs font-semibold text-[#2C221E] block mt-0.5">
+                      {formatPrice(p.price, p.isPriceOnRequest, settings?.defaultCurrency || '₹')}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1 shrink-0">
+                    <button
+                      onClick={() => setEditingProduct({ ...p })}
+                      title="Edit product"
+                      className="p-2 rounded-lg bg-amber-50 text-[#C8792C] hover:bg-amber-100 min-w-[40px] min-h-[40px] flex items-center justify-center"
+                    >
+                      <Edit2 className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={() => handleDeleteProduct(p.id)}
+                      title="Delete product"
+                      className="p-2 rounded-lg bg-red-50 text-red-600 hover:bg-red-100 min-w-[40px] min-h-[40px] flex items-center justify-center"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Products Table on Desktop/Tablet */}
+            <div className="hidden sm:block overflow-x-auto">
+              <table className="w-full text-left text-xs border border-[#E8DFD5] rounded-xl overflow-hidden min-w-[680px]">
                 <thead className="bg-[#FAF6F0] text-[#5B4632] uppercase tracking-wider font-semibold border-b border-[#E8DFD5]">
                   <tr>
                     <th className="p-3.5">Image and Title</th>

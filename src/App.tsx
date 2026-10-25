@@ -223,7 +223,7 @@ export default function App() {
 
   return (
     <AuthProvider>
-      <div className="min-h-screen flex flex-col bg-[#FAF6F0] text-[#2C221E] selection:bg-[#F4D9A0] selection:text-[#2C221E]">
+      <div className="min-h-screen flex flex-col bg-[#FAF6F0] text-[#2C221E] selection:bg-[#F4D9A0] selection:text-[#2C221E] overflow-x-hidden max-w-full w-full">
         {/* Navigation Centre */}
         <Header
           currentPath={currentPath}
@@ -234,7 +234,7 @@ export default function App() {
         />
 
         {/* Dynamic Route Content */}
-        <main className="flex-1">
+        <main className="flex-1 overflow-x-hidden max-w-full">
           {renderCurrentView()}
         </main>
 

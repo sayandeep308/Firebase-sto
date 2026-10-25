@@ -11,7 +11,8 @@ export type LuxuryButtonShape =
   | 'square-tile'
   | 'pill'
   | 'compact'
-  | 'icon';
+  | 'icon'
+  | 'icon-square';
 
 export interface LuxuryButtonProps {
   children?: React.ReactNode;
@@ -61,8 +62,9 @@ export const LuxuryButton: React.FC<LuxuryButtonProps> = ({
     wide: 'px-8 py-3.5 rounded-[18px]',
     'square-tile': 'aspect-square w-36 md:w-44 rounded-[22px] flex-col p-4 text-center',
     pill: 'px-7 py-3 rounded-full',
-    compact: 'px-4 py-2 rounded-[14px] text-xs',
-    icon: 'p-3 rounded-full aspect-square',
+    compact: 'px-4 py-2 rounded-[14px] text-xs min-h-[44px]',
+    icon: 'p-3 rounded-full aspect-square min-w-[44px] min-h-[44px]',
+    'icon-square': 'w-11 h-11 min-w-[44px] min-h-[44px] rounded-[13px] p-0 flex items-center justify-center aspect-square shrink-0',
   };
 
   // Size fine-tuning (for wide and pill shapes)
@@ -76,7 +78,7 @@ export const LuxuryButton: React.FC<LuxuryButtonProps> = ({
     'btn-luxury',
     variantClasses[variant] || variantClasses['burnt-amber'],
     shapeClasses[shape] || shapeClasses.wide,
-    shape !== 'square-tile' && shape !== 'icon' && shape !== 'compact' ? sizeClasses[size] : '',
+    shape !== 'square-tile' && shape !== 'icon' && shape !== 'icon-square' && shape !== 'compact' ? sizeClasses[size] : '',
     disabled ? 'opacity-60 cursor-not-allowed pointer-events-none' : 'cursor-pointer',
     className,
   ]

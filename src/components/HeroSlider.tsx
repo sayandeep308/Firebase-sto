@@ -41,7 +41,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ slides, onNavigate }) =>
   return (
     <section
       aria-label="Hero Showcase Slider"
-      className="relative w-full h-[520px] sm:h-[600px] lg:h-[650px] overflow-hidden bg-[#2C221E] select-none"
+      className="relative w-full h-[55vh] min-h-[460px] md:h-[80vh] md:min-h-[580px] overflow-hidden bg-[#2C221E] select-none"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -65,32 +65,33 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ slides, onNavigate }) =>
       ))}
 
       {/* Slide Content Box */}
-      <div className="relative z-20 max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center">
-        <div className="max-w-2xl text-[#FAF6F0] space-y-6 animate-fadeIn">
+      <div className="relative z-20 max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center pb-8 sm:pb-0">
+        <div className="max-w-2xl text-[#FAF6F0] space-y-3.5 sm:space-y-6 animate-fadeIn">
           {/* Subtle Champagne Gold Tag */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#5B4632]/80 border border-[#F4D9A0]/50 text-xs text-[#F4D9A0] font-semibold tracking-wide backdrop-blur-xs">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#5B4632]/80 border border-[#F4D9A0]/50 text-[11px] sm:text-xs text-[#F4D9A0] font-semibold tracking-wide backdrop-blur-xs">
             <Sparkles className="w-3.5 h-3.5 text-[#F4D9A0]" />
             <span>Mastercrafted Luxury Architecture</span>
           </div>
 
           {/* Heading */}
-          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-[#FAF6F0] leading-tight tracking-tight drop-shadow-md">
+          <h1 className="font-serif text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#FAF6F0] leading-tight tracking-tight drop-shadow-md">
             {currentSlide.title?.replace(/\s*&\s*/g, ' and ')}
           </h1>
 
           {/* Subtitle */}
-          <p className="text-base sm:text-lg text-[#FAF6F0]/90 leading-relaxed font-light drop-shadow">
+          <p className="text-xs sm:text-sm md:text-base lg:text-lg text-[#FAF6F0]/90 leading-relaxed font-light drop-shadow line-clamp-2 sm:line-clamp-none">
             {currentSlide.subtitle?.replace(/\s*&\s*/g, ' and ')}
           </p>
 
           {/* CTA Buttons with 3D Inner-Beveled Metallic Rim LuxuryButton */}
-          <div className="pt-2 flex flex-wrap items-center gap-4">
+          <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
             <LuxuryButton
               variant="burnt-amber"
               shape="wide"
               size="lg"
               onClick={() => onNavigate(currentSlide.ctaLink || '/products')}
               iconRight={<ArrowRight className="w-4 h-4 text-[#FFF8EA]" />}
+              className="text-center justify-center min-h-[44px]"
             >
               {currentSlide.ctaText || 'Explore Catalog'}
             </LuxuryButton>
@@ -100,6 +101,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ slides, onNavigate }) =>
               shape="wide"
               size="lg"
               onClick={() => onNavigate('/contact')}
+              className="text-center justify-center min-h-[44px]"
             >
               Request Custom Estimate
             </LuxuryButton>
@@ -107,20 +109,20 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ slides, onNavigate }) =>
         </div>
       </div>
 
-      {/* Manual Prev / Next Controls */}
+      {/* Manual Prev / Next Controls (Hidden on mobile to avoid overlapping content, visible on md+) */}
       {activeSlides.length > 1 && (
         <>
           <button
             onClick={handlePrev}
             aria-label="Previous slide"
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-[#5B4632]/70 hover:bg-[#5B4632] border border-[#F4D9A0]/40 text-[#F4D9A0] hover:text-white flex items-center justify-center transition-all duration-200 cursor-pointer backdrop-blur-xs shadow-lg hover:scale-105"
+            className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-[#5B4632]/70 hover:bg-[#5B4632] border border-[#F4D9A0]/40 text-[#F4D9A0] hover:text-white items-center justify-center transition-all duration-200 cursor-pointer backdrop-blur-xs shadow-lg hover:scale-105 min-w-[44px] min-h-[44px]"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           <button
             onClick={handleNext}
             aria-label="Next slide"
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-[#5B4632]/70 hover:bg-[#5B4632] border border-[#F4D9A0]/40 text-[#F4D9A0] hover:text-white flex items-center justify-center transition-all duration-200 cursor-pointer backdrop-blur-xs shadow-lg hover:scale-105"
+            className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-[#5B4632]/70 hover:bg-[#5B4632] border border-[#F4D9A0]/40 text-[#F4D9A0] hover:text-white items-center justify-center transition-all duration-200 cursor-pointer backdrop-blur-xs shadow-lg hover:scale-105 min-w-[44px] min-h-[44px]"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
@@ -129,16 +131,16 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ slides, onNavigate }) =>
 
       {/* Indicator Dots */}
       {activeSlides.length > 1 && (
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2.5 bg-[#463525]/60 px-3.5 py-1.5 rounded-full backdrop-blur-xs border border-[#F4D9A0]/20">
+        <div className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2.5 bg-[#463525]/70 px-3.5 py-1.5 rounded-full backdrop-blur-xs border border-[#F4D9A0]/20">
           {activeSlides.map((_, idx) => (
             <button
               key={idx}
               onClick={() => setCurrentIndex(idx)}
               aria-label={`Jump to slide ${idx + 1}`}
-              className={`transition-all duration-300 rounded-full cursor-pointer ${
+              className={`transition-all duration-300 rounded-full cursor-pointer min-w-[12px] min-h-[12px] ${
                 idx === currentIndex
-                  ? 'w-8 h-2.5 bg-[#F4D9A0] shadow-sm'
-                  : 'w-2.5 h-2.5 bg-[#FAF6F0]/40 hover:bg-[#FAF6F0]'
+                  ? 'w-7 sm:w-8 h-2 sm:h-2.5 bg-[#F4D9A0] shadow-sm'
+                  : 'w-2 sm:w-2.5 h-2 sm:h-2.5 bg-[#FAF6F0]/40 hover:bg-[#FAF6F0]'
               }`}
             />
           ))}
