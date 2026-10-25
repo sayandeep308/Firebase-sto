@@ -1,0 +1,180 @@
+{
+  "entities": {
+    "HeroSlide": {
+      "title": "HeroSlide",
+      "description": "Homepage hero banner slide configuration",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string", "maxLength": 120 },
+        "subtitle": { "type": "string", "maxLength": 250 },
+        "imageUrl": { "type": "string", "maxLength": 1000 },
+        "ctaText": { "type": "string", "maxLength": 50 },
+        "ctaLink": { "type": "string", "maxLength": 200 },
+        "displayOrder": { "type": "number" },
+        "isActive": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["title", "imageUrl", "displayOrder", "isActive"]
+    },
+    "Category": {
+      "title": "Category",
+      "description": "Product category and nested subcategories",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string", "maxLength": 100 },
+        "slug": { "type": "string", "maxLength": 100 },
+        "description": { "type": "string", "maxLength": 500 },
+        "imageUrl": { "type": "string", "maxLength": 1000 },
+        "displayOrder": { "type": "number" },
+        "subcategories": {
+          "type": "array",
+          "description": "List of subcategory names"
+        },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["name", "slug", "displayOrder"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Showcase catalog product item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string", "maxLength": 150 },
+        "slug": { "type": "string", "maxLength": 150 },
+        "categoryId": { "type": "string", "maxLength": 100 },
+        "categoryName": { "type": "string", "maxLength": 100 },
+        "subcategory": { "type": "string", "maxLength": 100 },
+        "shortDescription": { "type": "string", "maxLength": 300 },
+        "description": { "type": "string", "maxLength": 5000 },
+        "price": { "type": "number" },
+        "isPriceOnRequest": { "type": "boolean" },
+        "isMostSelling": { "type": "boolean" },
+        "images": {
+          "type": "array",
+          "description": "Array of image URLs"
+        },
+        "specifications": {
+          "type": "array",
+          "description": "Key value specification pairs"
+        },
+        "metaTitle": { "type": "string", "maxLength": 120 },
+        "metaDescription": { "type": "string", "maxLength": 300 },
+        "featured": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["title", "slug", "categoryId", "categoryName", "isPriceOnRequest", "isMostSelling"]
+    },
+    "BlogPost": {
+      "title": "BlogPost",
+      "description": "SEO-optimized blog articles",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string", "maxLength": 200 },
+        "slug": { "type": "string", "maxLength": 150 },
+        "summary": { "type": "string", "maxLength": 400 },
+        "content": { "type": "string", "maxLength": 20000 },
+        "featuredImage": { "type": "string", "maxLength": 1000 },
+        "metaTitle": { "type": "string", "maxLength": 120 },
+        "metaDescription": { "type": "string", "maxLength": 300 },
+        "keywords": {
+          "type": "array",
+          "description": "SEO keywords"
+        },
+        "isPublished": { "type": "boolean" },
+        "publishedAt": { "type": "string" },
+        "author": { "type": "string", "maxLength": 100 },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["title", "slug", "content", "isPublished"]
+    },
+    "Enquiry": {
+      "title": "Enquiry",
+      "description": "Customer inquiry received from product page or contact page",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "customerName": { "type": "string", "maxLength": 100 },
+        "phone": { "type": "string", "maxLength": 30 },
+        "email": { "type": "string", "maxLength": 100 },
+        "productId": { "type": "string", "maxLength": 100 },
+        "productTitle": { "type": "string", "maxLength": 150 },
+        "message": { "type": "string", "maxLength": 2000 },
+        "type": { "type": "string", "maxLength": 50 },
+        "status": { "type": "string", "enum": ["new", "contacted", "closed"] },
+        "notes": { "type": "string", "maxLength": 1000 },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["customerName", "phone", "message", "status"]
+    },
+    "SiteSettings": {
+      "title": "SiteSettings",
+      "description": "Business contact, WhatsApp, and Cloudinary settings",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "businessName": { "type": "string", "maxLength": 100 },
+        "whatsappNumber": { "type": "string", "maxLength": 30 },
+        "phoneNumber": { "type": "string", "maxLength": 30 },
+        "email": { "type": "string", "maxLength": 100 },
+        "address": { "type": "string", "maxLength": 300 },
+        "cloudinaryCloudName": { "type": "string", "maxLength": 100 },
+        "cloudinaryUploadPreset": { "type": "string", "maxLength": 100 },
+        "defaultCurrency": { "type": "string", "maxLength": 10 },
+        "welcomeMessage": { "type": "string", "maxLength": 500 },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["businessName", "whatsappNumber"]
+    },
+    "Admin": {
+      "title": "Admin",
+      "description": "Admin user profile marker",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["uid", "email"]
+    }
+  },
+  "firestore": {
+    "/hero_slides/{slideId}": {
+      "schema": "HeroSlide",
+      "description": "Collection of homepage hero banner slides"
+    },
+    "/categories/{categoryId}": {
+      "schema": "Category",
+      "description": "Showcase product categories and nested subcategories"
+    },
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Catalog products with specs, images, and price details"
+    },
+    "/blog_posts/{postId}": {
+      "schema": "BlogPost",
+      "description": "SEO articles and crafting guides"
+    },
+    "/enquiries/{enquiryId}": {
+      "schema": "Enquiry",
+      "description": "Customer enquiries submitted through product pages or contact"
+    },
+    "/site_settings/{settingsId}": {
+      "schema": "SiteSettings",
+      "description": "Site-wide configuration and contact info"
+    },
+    "/admins/{adminId}": {
+      "schema": "Admin",
+      "description": "Collection of authorized admin users"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Satarupa Steel Enterprise",
+  "description": "Satarupa Steel Enterprise - Premium stainless steel items, aluminium fabrications, interior decor, furniture, puja corner mandirs, and custom ceiling architectural craft in Madpur Station Bajar.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
