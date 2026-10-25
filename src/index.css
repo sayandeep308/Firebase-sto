@@ -1,69 +1,131 @@
 @import "tailwindcss";
 
-/* Melodrama Font Family by Indian Type Foundry (ITF) */
+/* Quicksand Font Family by Andrew Paglinawan / Indian Type Foundry */
 @font-face {
-  font-family: 'Melodrama';
-  src: url('/fonts/melodrama/Melodrama-Light.woff2') format('woff2'),
-       url('/fonts/melodrama/Melodrama-Light.woff') format('woff'),
-       url('/fonts/melodrama/Melodrama-Light.ttf') format('truetype');
+  font-family: 'Quicksand';
+  src: url('/fonts/quicksand/Quicksand-Light.woff2') format('woff2'),
+       url('/fonts/quicksand/Quicksand-Light.woff') format('woff'),
+       url('/fonts/quicksand/Quicksand-Light.ttf') format('truetype');
   font-weight: 300;
   font-display: swap;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Melodrama';
-  src: url('/fonts/melodrama/Melodrama-Regular.woff2') format('woff2'),
-       url('/fonts/melodrama/Melodrama-Regular.woff') format('woff'),
-       url('/fonts/melodrama/Melodrama-Regular.ttf') format('truetype');
+  font-family: 'Quicksand';
+  src: url('/fonts/quicksand/Quicksand-Regular.woff2') format('woff2'),
+       url('/fonts/quicksand/Quicksand-Regular.woff') format('woff'),
+       url('/fonts/quicksand/Quicksand-Regular.ttf') format('truetype');
   font-weight: 400;
   font-display: swap;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Melodrama';
-  src: url('/fonts/melodrama/Melodrama-Medium.woff2') format('woff2'),
-       url('/fonts/melodrama/Melodrama-Medium.woff') format('woff'),
-       url('/fonts/melodrama/Melodrama-Medium.ttf') format('truetype');
+  font-family: 'Quicksand';
+  src: url('/fonts/quicksand/Quicksand-Medium.woff2') format('woff2'),
+       url('/fonts/quicksand/Quicksand-Medium.woff') format('woff'),
+       url('/fonts/quicksand/Quicksand-Medium.ttf') format('truetype');
   font-weight: 500;
   font-display: swap;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Melodrama';
-  src: url('/fonts/melodrama/Melodrama-Semibold.woff2') format('woff2'),
-       url('/fonts/melodrama/Melodrama-Semibold.woff') format('woff'),
-       url('/fonts/melodrama/Melodrama-Semibold.ttf') format('truetype');
+  font-family: 'Quicksand';
+  src: url('/fonts/quicksand/Quicksand-SemiBold.woff2') format('woff2'),
+       url('/fonts/quicksand/Quicksand-SemiBold.woff') format('woff'),
+       url('/fonts/quicksand/Quicksand-SemiBold.ttf') format('truetype');
   font-weight: 600;
   font-display: swap;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Melodrama';
-  src: url('/fonts/melodrama/Melodrama-Bold.woff2') format('woff2'),
-       url('/fonts/melodrama/Melodrama-Bold.woff') format('woff'),
-       url('/fonts/melodrama/Melodrama-Bold.ttf') format('truetype');
+  font-family: 'Quicksand';
+  src: url('/fonts/quicksand/Quicksand-Bold.woff2') format('woff2'),
+       url('/fonts/quicksand/Quicksand-Bold.woff') format('woff'),
+       url('/fonts/quicksand/Quicksand-Bold.ttf') format('truetype');
   font-weight: 700;
   font-display: swap;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Melodrama-Variable';
-  src: url('/fonts/melodrama/Melodrama-Variable.woff2') format('woff2'),
-       url('/fonts/melodrama/Melodrama-Variable.woff') format('woff'),
-       url('/fonts/melodrama/Melodrama-Variable.ttf') format('truetype');
+  font-family: 'Quicksand-Variable';
+  src: url('/fonts/quicksand/Quicksand-Variable.woff2') format('woff2'),
+       url('/fonts/quicksand/Quicksand-Variable.woff') format('woff'),
+       url('/fonts/quicksand/Quicksand-Variable.ttf') format('truetype');
+  font-weight: 300 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+/* Explicit weight families */
+@font-face {
+  font-family: 'Quicksand-Light';
+  src: url('/fonts/quicksand/Quicksand-Light.woff2') format('woff2'),
+       url('/fonts/quicksand/Quicksand-Light.woff') format('woff'),
+       url('/fonts/quicksand/Quicksand-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Quicksand-Regular';
+  src: url('/fonts/quicksand/Quicksand-Regular.woff2') format('woff2'),
+       url('/fonts/quicksand/Quicksand-Regular.woff') format('woff'),
+       url('/fonts/quicksand/Quicksand-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Quicksand-Medium';
+  src: url('/fonts/quicksand/Quicksand-Medium.woff2') format('woff2'),
+       url('/fonts/quicksand/Quicksand-Medium.woff') format('woff'),
+       url('/fonts/quicksand/Quicksand-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Quicksand-SemiBold';
+  src: url('/fonts/quicksand/Quicksand-SemiBold.woff2') format('woff2'),
+       url('/fonts/quicksand/Quicksand-SemiBold.woff') format('woff'),
+       url('/fonts/quicksand/Quicksand-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Quicksand-Bold';
+  src: url('/fonts/quicksand/Quicksand-Bold.woff2') format('woff2'),
+       url('/fonts/quicksand/Quicksand-Bold.woff') format('woff'),
+       url('/fonts/quicksand/Quicksand-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+/* Backward-compatibility alias */
+@font-face {
+  font-family: 'Melodrama';
+  src: url('/fonts/quicksand/Quicksand-Variable.woff2') format('woff2'),
+       url('/fonts/quicksand/Quicksand-Bold.woff2') format('woff2');
   font-weight: 300 700;
   font-display: swap;
   font-style: normal;
 }
 
 @theme {
-  --font-serif: 'Melodrama', 'Melodrama-Variable', Georgia, 'Times New Roman', serif;
-  --font-display: 'Melodrama', 'Melodrama-Variable', Georgia, serif;
+  --font-serif: 'Quicksand', 'Quicksand-Variable', sans-serif;
+  --font-display: 'Quicksand', 'Quicksand-Variable', sans-serif;
+  --font-sans: 'Quicksand', 'Quicksand-Variable', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --color-mocha: #5B4632;
   --color-mocha-dark: #463525;
   --color-mocha-light: #6B523B;
@@ -83,14 +145,14 @@
 html, body {
   background-color: #FAF6F0;
   color: #2C221E;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-family: 'Quicksand', 'Quicksand-Variable', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   overflow-x: hidden;
   max-width: 100vw;
   width: 100%;
 }
 
 h1, h2, h3, h4, .font-serif, .font-brand {
-  font-family: 'Melodrama', 'Melodrama-Variable', Georgia, 'Times New Roman', serif;
+  font-family: 'Quicksand', 'Quicksand-Variable', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   letter-spacing: 0.015em;
 }
 
