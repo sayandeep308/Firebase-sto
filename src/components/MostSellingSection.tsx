@@ -2,6 +2,7 @@ import React from 'react';
 import { Flame, Sparkles, ArrowRight } from 'lucide-react';
 import { Product, SiteSettings } from '../types';
 import { ProductCard } from './ProductCard';
+import { LuxuryButton } from './LuxuryButton';
 
 interface MostSellingSectionProps {
   products: Product[];
@@ -36,13 +37,16 @@ export const MostSellingSection: React.FC<MostSellingSectionProps> = ({
             </p>
           </div>
 
-          <button
+          <LuxuryButton
+            variant="burnt-amber"
+            shape="wide"
+            size="sm"
             onClick={() => onNavigate('/products?mostSelling=1')}
-            className="btn-gold-pill text-xs sm:text-sm px-6 py-2.5 font-bold shrink-0 group flex items-center gap-2 self-start md:self-auto shadow-md"
+            iconRight={<ArrowRight className="w-4 h-4 text-[#FFF8EA]" />}
+            className="shrink-0 self-start md:self-auto"
           >
-            <span>View All Bestsellers</span>
-            <ArrowRight className="w-4 h-4 text-[#241403] group-hover:translate-x-1.5 transition-transform" />
-          </button>
+            View All Bestsellers
+          </LuxuryButton>
         </div>
 
         {/* Products Grid */}

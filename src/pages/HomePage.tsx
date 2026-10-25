@@ -3,6 +3,7 @@ import { HeroSlide, Category, Product, BlogPost, SiteSettings } from '../types';
 import { HeroSlider } from '../components/HeroSlider';
 import { MostSellingSection } from '../components/MostSellingSection';
 import { CategoryShowcaseSection } from '../components/CategoryShowcaseSection';
+import { LuxuryButton } from '../components/LuxuryButton';
 import { ArrowRight, Sparkles, Shield, Hammer, Compass, BookOpen } from 'lucide-react';
 
 interface HomePageProps {
@@ -33,6 +34,87 @@ export const HomePage: React.FC<HomePageProps> = ({
         settings={settings}
         onNavigate={onNavigate}
       />
+
+      {/* 3. Core Architectural Disciplines (Showcasing all 4 LuxuryButton variants in square-tile format) */}
+      <section className="py-12 bg-[#FAF6F0] border-b border-[#E8DFD5]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-8 space-y-2">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-[#C8792C] block">
+              Architectural Streams
+            </span>
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#2C221E]">
+              Core Fabrication Disciplines
+            </h2>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+            <LuxuryButton
+              variant="burnt-amber"
+              shape="square-tile"
+              onClick={() => onNavigate('/products?category=puja-corner')}
+              className="group"
+            >
+              <div className="flex flex-col items-center justify-center h-full space-y-2">
+                <Sparkles className="w-6 h-6 text-[#FFF8EA]" />
+                <span className="font-bold text-xs tracking-wider">Puja Corner</span>
+                <span className="text-[10px] opacity-80 normal-case font-normal">Mandirs &amp; Devalayas</span>
+              </div>
+            </LuxuryButton>
+
+            <LuxuryButton
+              variant="dark-espresso"
+              shape="square-tile"
+              onClick={() => onNavigate('/products?category=stainless-steel-items')}
+              className="group"
+            >
+              <div className="flex flex-col items-center justify-center h-full space-y-2">
+                <Shield className="w-6 h-6 text-[#F4D9A0]" />
+                <span className="font-bold text-xs tracking-wider">Stainless Steel</span>
+                <span className="text-[10px] opacity-80 normal-case font-normal">PVD Gold &amp; Railings</span>
+              </div>
+            </LuxuryButton>
+
+            <LuxuryButton
+              variant="brushed-taupe"
+              shape="square-tile"
+              onClick={() => onNavigate('/products?category=aluminium-items')}
+              className="group"
+            >
+              <div className="flex flex-col items-center justify-center h-full space-y-2">
+                <Compass className="w-6 h-6 text-[#FFFDF9]" />
+                <span className="font-bold text-xs tracking-wider">Aluminium</span>
+                <span className="text-[10px] opacity-80 normal-case font-normal">Slimline Partitions</span>
+              </div>
+            </LuxuryButton>
+
+            <LuxuryButton
+              variant="champagne-pearl"
+              shape="square-tile"
+              onClick={() => onNavigate('/products?category=ceiling-customisation')}
+              className="group"
+            >
+              <div className="flex flex-col items-center justify-center h-full space-y-2">
+                <Hammer className="w-6 h-6 text-[#5B4632]" />
+                <span className="font-bold text-xs tracking-wider">Ceilings</span>
+                <span className="text-[10px] opacity-80 normal-case font-normal">Wooden Rafters</span>
+              </div>
+            </LuxuryButton>
+
+            <LuxuryButton
+              variant="burnt-amber"
+              shape="square-tile"
+              onClick={() => onNavigate('/products?category=furniture-and-furnishings')}
+              className="group"
+            >
+              <div className="flex flex-col items-center justify-center h-full space-y-2">
+                <BookOpen className="w-6 h-6 text-[#FFF8EA]" />
+                <span className="font-bold text-xs tracking-wider">Furniture</span>
+                <span className="text-[10px] opacity-80 normal-case font-normal">Solid Teak Wood</span>
+              </div>
+            </LuxuryButton>
+          </div>
+        </div>
+      </section>
 
       {/* Atelier Craftsmanship Highlights */}
       <section className="py-12 bg-white border-b border-[#E8DFD5]">
@@ -176,18 +258,22 @@ export const HomePage: React.FC<HomePageProps> = ({
           </p>
 
           <div className="pt-2 flex flex-wrap justify-center items-center gap-4">
-            <button
+            <LuxuryButton
+              variant="champagne-pearl"
+              shape="wide"
+              size="lg"
               onClick={() => onNavigate('/contact')}
-              className="btn-gold-pill-light px-8 py-3.5 text-sm sm:text-base font-bold shadow-lg"
             >
               Consult with Senior Craftsman
-            </button>
-            <button
+            </LuxuryButton>
+            <LuxuryButton
+              variant="burnt-amber"
+              shape="wide"
+              size="lg"
               onClick={() => onNavigate('/categories')}
-              className="btn-gold-pill px-8 py-3.5 text-sm sm:text-base font-bold shadow-lg"
             >
               Explore Category Hub
-            </button>
+            </LuxuryButton>
           </div>
         </div>
       </section>

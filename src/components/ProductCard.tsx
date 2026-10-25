@@ -2,6 +2,7 @@ import React from 'react';
 import { Sparkles, MessageCircle, ArrowUpRight, Flame } from 'lucide-react';
 import { Product, SiteSettings } from '../types';
 import { formatPrice } from '../utils/currency';
+import { LuxuryButton } from './LuxuryButton';
 
 interface ProductCardProps {
   product: Product;
@@ -52,14 +53,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         </div>
 
         {/* Quick View Hover Overlay */}
-        <div className="absolute inset-0 bg-[#2C221E]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
-          <button
+        <div className="absolute inset-0 bg-[#2C221E]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+          <LuxuryButton
+            variant="burnt-amber"
+            shape="wide"
+            size="sm"
             onClick={() => onNavigate(`/product/${product.slug}`)}
-            className="btn-gold-pill text-xs px-5 py-2 font-bold shadow-lg"
+            iconRight={<ArrowUpRight className="w-3.5 h-3.5 ml-1 text-[#FFF8EA]" />}
           >
-            <span>View Full Specifications</span>
-            <ArrowUpRight className="w-4 h-4 ml-1 text-[#241403]" />
-          </button>
+            Full Specifications
+          </LuxuryButton>
         </div>
       </div>
 
@@ -103,12 +106,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               <MessageCircle className="w-4 h-4" />
             </a>
 
-            <button
+            <LuxuryButton
+              variant="burnt-amber"
+              shape="compact"
+              size="sm"
               onClick={() => onNavigate(`/product/${product.slug}`)}
-              className="btn-gold-pill text-xs px-3.5 py-1.5 font-bold"
             >
               Explore
-            </button>
+            </LuxuryButton>
           </div>
         </div>
       </div>

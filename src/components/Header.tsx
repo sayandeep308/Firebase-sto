@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { Category, SiteSettings } from '../types';
 import { TilakLogo } from './TilakLogo';
+import { LuxuryButton } from './LuxuryButton';
 
 interface HeaderProps {
   currentPath: string;
@@ -113,13 +114,17 @@ export const Header: React.FC<HeaderProps> = ({
               </button>
             )}
 
-            {/* Custom Quote Button with Golden Mirror Finish Edge */}
-            <button
-              onClick={() => handleNav('/contact')}
-              className="hidden sm:inline-flex btn-gold-pill text-xs px-4 py-2 font-bold tracking-wide"
-            >
-              Get Quote
-            </button>
+            {/* Custom Quote Button with LuxuryButton */}
+            <div className="hidden sm:inline-flex">
+              <LuxuryButton
+                variant="burnt-amber"
+                shape="compact"
+                size="sm"
+                onClick={() => handleNav('/contact')}
+              >
+                Get Quote
+              </LuxuryButton>
+            </div>
 
             {/* The 3 Lines Menu Button (All Sections Directory Trigger) */}
             <button
@@ -331,12 +336,15 @@ export const Header: React.FC<HeaderProps> = ({
 
               {/* Direct Quote Action */}
               <div className="pt-2">
-                <button
+                <LuxuryButton
+                  variant="burnt-amber"
+                  shape="wide"
+                  size="md"
                   onClick={() => handleNav('/contact')}
-                  className="w-full btn-gold-pill py-3.5 text-sm font-bold shadow-lg"
+                  className="w-full"
                 >
                   Request Bespoke Quotation
-                </button>
+                </LuxuryButton>
               </div>
             </div>
           </div>

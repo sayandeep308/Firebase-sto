@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Sparkles, ArrowRight } from 'lucide-react';
 import { HeroSlide } from '../types';
+import { LuxuryButton } from './LuxuryButton';
 
 interface HeroSliderProps {
   slides: HeroSlide[];
@@ -82,22 +83,26 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ slides, onNavigate }) =>
             {currentSlide.subtitle?.replace(/\s*&\s*/g, ' and ')}
           </p>
 
-          {/* CTA Buttons (Reference 1 Metallic Gold Bezel Pill Buttons) */}
+          {/* CTA Buttons with 3D Inner-Beveled Metallic Rim LuxuryButton */}
           <div className="pt-2 flex flex-wrap items-center gap-4">
-            <button
+            <LuxuryButton
+              variant="burnt-amber"
+              shape="wide"
+              size="lg"
               onClick={() => onNavigate(currentSlide.ctaLink || '/products')}
-              className="btn-gold-pill px-7 sm:px-9 py-3.5 text-sm sm:text-base font-bold group flex items-center gap-2 shadow-lg"
+              iconRight={<ArrowRight className="w-4 h-4 text-[#FFF8EA]" />}
             >
-              <span>{currentSlide.ctaText || 'Explore Catalog'}</span>
-              <ArrowRight className="w-4 h-4 text-[#241403] group-hover:translate-x-1.5 transition-transform" />
-            </button>
+              {currentSlide.ctaText || 'Explore Catalog'}
+            </LuxuryButton>
 
-            <button
+            <LuxuryButton
+              variant="champagne-pearl"
+              shape="wide"
+              size="lg"
               onClick={() => onNavigate('/contact')}
-              className="btn-gold-pill-light px-7 py-3.5 text-sm sm:text-base font-bold shadow-lg"
             >
               Request Custom Estimate
-            </button>
+            </LuxuryButton>
           </div>
         </div>
       </div>

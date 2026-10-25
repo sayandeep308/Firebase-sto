@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowRight, Layers, Tag } from 'lucide-react';
 import { Category, Product, SiteSettings } from '../types';
 import { ProductCard } from './ProductCard';
+import { LuxuryButton } from './LuxuryButton';
 
 interface CategoryShowcaseSectionProps {
   categories: Category[];
@@ -84,14 +85,17 @@ export const CategoryShowcaseSection: React.FC<CategoryShowcaseSectionProps> = (
                   )}
                 </div>
 
-                {/* Explore All Gold Pill Button (Ref 1) */}
-                <button
+                {/* Explore All LuxuryButton */}
+                <LuxuryButton
+                  variant="burnt-amber"
+                  shape="wide"
+                  size="sm"
                   onClick={() => onNavigate(`/products?category=${category.slug}`)}
-                  className="btn-gold-pill text-xs sm:text-sm px-6 py-2.5 font-bold group flex items-center gap-2 self-start lg:self-auto shrink-0 shadow-md"
+                  iconRight={<ArrowRight className="w-4 h-4 text-[#FFF8EA]" />}
+                  className="self-start lg:self-auto shrink-0"
                 >
-                  <span>Explore All {category.name}</span>
-                  <ArrowRight className="w-4 h-4 text-[#241403] group-hover:translate-x-1.5 transition-transform" />
-                </button>
+                  Explore All {category.name}
+                </LuxuryButton>
               </div>
 
               {/* Products Grid or Empty Fallback */}

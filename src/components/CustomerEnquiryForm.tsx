@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Send, CheckCircle2, MessageCircle, AlertCircle, Sparkles } from 'lucide-react';
 import { Product, SiteSettings } from '../types';
 import { submitEnquiry } from '../services/db';
+import { LuxuryButton } from './LuxuryButton';
 
 interface CustomerEnquiryFormProps {
   product?: Product | null;
@@ -95,17 +96,19 @@ export const CustomerEnquiryForm: React.FC<CustomerEnquiryFormProps> = ({
             <MessageCircle className="w-4 h-4" />
             <span>Connect on WhatsApp Now</span>
           </a>
-          <button
+          <LuxuryButton
+            variant="champagne-pearl"
+            shape="wide"
+            size="sm"
             onClick={() => {
               setSubmitted(false);
               setCustomerName('');
               setPhone('');
               setEmail('');
             }}
-            className="btn-gold-pill-light text-xs px-5 py-2 font-bold"
           >
             Submit Another Enquiry
-          </button>
+          </LuxuryButton>
         </div>
       </div>
     );
@@ -187,14 +190,16 @@ export const CustomerEnquiryForm: React.FC<CustomerEnquiryFormProps> = ({
       </div>
 
       <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
-        <button
+        <LuxuryButton
           type="submit"
           disabled={loading}
-          className="btn-gold-pill text-xs sm:text-sm px-7 py-3 font-bold flex items-center gap-2 shadow-md"
+          variant="burnt-amber"
+          shape="wide"
+          size="md"
+          icon={<Send className="w-4 h-4 text-[#FFF8EA]" />}
         >
-          <Send className="w-4 h-4 text-[#241403]" />
-          <span>{loading ? 'Submitting Enquiry...' : 'Submit Official Enquiry'}</span>
-        </button>
+          {loading ? 'Submitting Enquiry...' : 'Submit Official Enquiry'}
+        </LuxuryButton>
 
         <a
           href={directWhatsAppUrl}
