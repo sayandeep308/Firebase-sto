@@ -75,7 +75,7 @@ export const Footer: React.FC<FooterProps> = ({ categories, settings, onNavigate
             >
               <TilakLogo size="md" className="group-hover:scale-105 transition-transform duration-300" />
               <span className="font-serif text-2xl font-bold tracking-tight text-[#FAF6F0]">
-                Satarupa <span className="text-[#F4D9A0]">Steel Enterprise</span>
+                Satarupa <span className="text-[#F4D9A0]">Enterprise</span>
               </span>
             </div>
             <p className="text-sm text-[#FAF6F0]/80 leading-relaxed max-w-sm">

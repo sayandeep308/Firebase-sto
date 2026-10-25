@@ -1,18 +1,69 @@
 @import "tailwindcss";
 
+/* Melodrama Font Family by Indian Type Foundry (ITF) */
 @font-face {
-  font-family: 'SimpleFashion';
-  src: url('/fonts/SimpleFashionDemoRegular.ttf?v=2') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'Melodrama';
+  src: url('/fonts/melodrama/Melodrama-Light.woff2') format('woff2'),
+       url('/fonts/melodrama/Melodrama-Light.woff') format('woff'),
+       url('/fonts/melodrama/Melodrama-Light.ttf') format('truetype');
+  font-weight: 300;
   font-display: swap;
-  /* Restrict SimpleFashion strictly to alphabetic letters (A-Z, a-z, space) so digits and punctuation cleanly fall back to Georgia/serif without demo watermark banners */
-  unicode-range: U+0020, U+0041-005A, U+0061-007A;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Melodrama';
+  src: url('/fonts/melodrama/Melodrama-Regular.woff2') format('woff2'),
+       url('/fonts/melodrama/Melodrama-Regular.woff') format('woff'),
+       url('/fonts/melodrama/Melodrama-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Melodrama';
+  src: url('/fonts/melodrama/Melodrama-Medium.woff2') format('woff2'),
+       url('/fonts/melodrama/Melodrama-Medium.woff') format('woff'),
+       url('/fonts/melodrama/Melodrama-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Melodrama';
+  src: url('/fonts/melodrama/Melodrama-Semibold.woff2') format('woff2'),
+       url('/fonts/melodrama/Melodrama-Semibold.woff') format('woff'),
+       url('/fonts/melodrama/Melodrama-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Melodrama';
+  src: url('/fonts/melodrama/Melodrama-Bold.woff2') format('woff2'),
+       url('/fonts/melodrama/Melodrama-Bold.woff') format('woff'),
+       url('/fonts/melodrama/Melodrama-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Melodrama-Variable';
+  src: url('/fonts/melodrama/Melodrama-Variable.woff2') format('woff2'),
+       url('/fonts/melodrama/Melodrama-Variable.woff') format('woff'),
+       url('/fonts/melodrama/Melodrama-Variable.ttf') format('truetype');
+  font-weight: 300 700;
+  font-display: swap;
+  font-style: normal;
 }
 
 @theme {
-  --font-serif: 'SimpleFashion', Georgia, 'Times New Roman', serif;
-  --font-display: 'SimpleFashion', Georgia, serif;
+  --font-serif: 'Melodrama', 'Melodrama-Variable', Georgia, 'Times New Roman', serif;
+  --font-display: 'Melodrama', 'Melodrama-Variable', Georgia, serif;
   --color-mocha: #5B4632;
   --color-mocha-dark: #463525;
   --color-mocha-light: #6B523B;
@@ -37,13 +88,11 @@ body {
 }
 
 h1, h2, h3, h4, .font-serif, .font-brand {
-  font-family: 'SimpleFashion', Georgia, 'Times New Roman', serif;
-  letter-spacing: 0.02em;
-  font-variant-ligatures: none;
-  font-feature-settings: "liga" 0, "clig" 0, "dlig" 0, "hlig" 0;
+  font-family: 'Melodrama', 'Melodrama-Variable', Georgia, 'Times New Roman', serif;
+  letter-spacing: 0.015em;
 }
 
-/* Reference 1: Luxury Metallic Gold Bezel Pill Buttons */
+/* Reference 1 with Mirror Finish Golden Edges */
 .btn-gold-pill,
 .btn-gold-pill-light,
 .btn-gold-pill-cream,
@@ -64,51 +113,64 @@ h1, h2, h3, h4, .font-serif, .font-brand {
   white-space: nowrap;
 }
 
-/* Base Primary Pill: Warm Radiant Gold (Middle button from Ref 1) */
+/* Base Primary Pill: Warm Radiant Gold with Mirror Finish Golden Tone Edge */
 .btn-gold-pill,
 .btn-gold-pill-amber,
 .btn-wood {
-  background: linear-gradient(180deg, #FDE69E 0%, #E8B44A 35%, #C8861B 75%, #9E5E04 100%);
-  border: 2px solid #F8D988;
-  color: #241403;
-  text-shadow: 0 1px 0 rgba(255, 245, 205, 0.7);
+  background: linear-gradient(180deg, #FDE8A5 0%, #E8B44A 35%, #C9881E 75%, #9E5E04 100%);
+  border: 2px solid #FFF2B2;
+  color: #221302;
+  text-shadow: 0 1px 0 rgba(255, 245, 210, 0.75);
   box-shadow: 
-    0 0 0 1px #78480F,
-    0 4px 14px -2px rgba(138, 86, 17, 0.45),
-    inset 0 1px 2px rgba(255, 255, 255, 0.85),
-    inset 0 -1.5px 2px rgba(92, 54, 7, 0.4);
+    0 0 0 1px #744304,
+    0 0 0 2.5px #FFDF78,
+    0 0 0 3.5px #4E2C02,
+    0 0 0 4.5px #FFF2B8,
+    0 8px 24px -2px rgba(214, 158, 51, 0.48),
+    0 0 18px rgba(255, 230, 140, 0.35),
+    inset 0 1.5px 2px rgba(255, 255, 255, 0.95),
+    inset 0 -1.5px 2px rgba(92, 54, 7, 0.6),
+    inset 0 0 8px rgba(255, 240, 180, 0.35);
 }
 
-/* Secondary Pill: Light Cream / Champagne (Top button from Ref 1) */
+/* Secondary Pill: Light Cream / Champagne with Mirror Finish Golden Edge */
 .btn-gold-pill-light,
 .btn-gold-pill-cream,
 .btn-wood-gold {
   background: linear-gradient(180deg, #FFFFFF 0%, #FFF8EA 30%, #F5DEB4 70%, #E2BA7A 100%);
-  border: 2px solid #DDB05E;
+  border: 2px solid #FFF5C5;
   color: #382410;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.95);
   box-shadow: 
-    0 0 0 1px #8C5511,
-    0 4px 14px -2px rgba(140, 85, 17, 0.3),
-    inset 0 1px 2px rgba(255, 255, 255, 0.95),
-    inset 0 -1.5px 2px rgba(184, 134, 45, 0.35);
+    0 0 0 1px #804A08,
+    0 0 0 2.5px #FDD56A,
+    0 0 0 3.5px #543003,
+    0 0 0 4.5px #FFEBA6,
+    0 8px 22px -2px rgba(184, 134, 45, 0.42),
+    0 0 16px rgba(255, 235, 160, 0.3),
+    inset 0 1.5px 2px rgba(255, 255, 255, 1),
+    inset 0 -1.5px 2px rgba(184, 134, 45, 0.45),
+    inset 0 0 6px rgba(255, 245, 200, 0.35);
 }
 
-/* Tertiary Pill: Dark Obsidian / Espresso Gold (Bottom button from Ref 1) */
+/* Tertiary Pill: Dark Obsidian with Mirror Finish Golden Edge */
 .btn-gold-pill-dark {
   background: linear-gradient(180deg, #382F28 0%, #241D19 50%, #15110E 100%);
-  border: 2px solid #E5B25D;
+  border: 2px solid #FFF3B8;
   color: #FFF2C8;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.85);
   box-shadow: 
-    0 0 0 1px #78480F,
-    0 4px 16px -2px rgba(0, 0, 0, 0.5),
-    0 0 12px rgba(229, 178, 93, 0.25),
-    inset 0 1px 2px rgba(255, 240, 180, 0.5),
-    inset 0 -1.5px 3px rgba(0, 0, 0, 0.8);
+    0 0 0 1px #744304,
+    0 0 0 2.5px #FFDF78,
+    0 0 0 3.5px #4E2C02,
+    0 0 0 4.5px #FFF2B8,
+    0 8px 26px -2px rgba(0, 0, 0, 0.65),
+    0 0 20px rgba(229, 178, 93, 0.4),
+    inset 0 1.5px 2px rgba(255, 240, 180, 0.75),
+    inset 0 -1.5px 3px rgba(0, 0, 0, 0.85);
 }
 
-/* Specular Corner Glint dots matching Reference 1 Vector mockups */
+/* High-Gloss Mirror Specular Reflection Glints (Top-Left & Bottom-Right) */
 .btn-gold-pill::before,
 .btn-gold-pill-light::before,
 .btn-gold-pill-cream::before,
@@ -120,13 +182,13 @@ h1, h2, h3, h4, .font-serif, .font-brand {
   position: absolute;
   top: 3px;
   left: 12%;
-  width: 5px;
-  height: 5px;
+  width: 6.5px;
+  height: 6.5px;
   border-radius: 9999px;
-  background: radial-gradient(circle, #FFFFFF 40%, rgba(255, 255, 255, 0.1) 90%, transparent 100%);
-  box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.95);
+  background: radial-gradient(circle, #FFFFFF 45%, rgba(255, 255, 255, 0.25) 80%, transparent 100%);
+  box-shadow: 0 0 8px 2px #FFFFFF, 0 0 14px 4px rgba(255, 235, 160, 0.95);
   pointer-events: none;
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 .btn-gold-pill::after,
@@ -140,51 +202,60 @@ h1, h2, h3, h4, .font-serif, .font-brand {
   position: absolute;
   bottom: 3px;
   right: 12%;
-  width: 4.5px;
-  height: 4.5px;
+  width: 5.5px;
+  height: 5.5px;
   border-radius: 9999px;
-  background: radial-gradient(circle, #FFFFFF 40%, rgba(255, 255, 255, 0.1) 90%, transparent 100%);
-  box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.9);
+  background: radial-gradient(circle, #FFFFFF 45%, rgba(255, 255, 255, 0.25) 80%, transparent 100%);
+  box-shadow: 0 0 7px 2px #FFFFFF, 0 0 12px 3px rgba(255, 235, 160, 0.9);
   pointer-events: none;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
-/* Hover States for all Ref 1 Gold Pill Buttons */
+/* Hover States: Intensified Mirror Specular Reflection */
 .btn-gold-pill:hover,
 .btn-wood:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.05);
-  border-color: #FFE69B;
+  transform: translateY(-2.5px) scale(1.012);
+  filter: brightness(1.06);
+  border-color: #FFFFFF;
   box-shadow: 
-    0 0 0 1px #8A5515,
-    0 8px 24px -2px rgba(184, 126, 34, 0.55),
-    0 0 14px rgba(248, 217, 136, 0.4),
-    inset 0 1px 3px rgba(255, 255, 255, 0.95),
-    inset 0 -1.5px 3px rgba(92, 54, 7, 0.5);
+    0 0 0 1px #8A5208,
+    0 0 0 3px #FFEFA8,
+    0 0 0 4.5px #5C3203,
+    0 0 0 6px #FFF7D2,
+    0 12px 30px -2px rgba(230, 170, 45, 0.65),
+    0 0 25px rgba(255, 240, 170, 0.55),
+    inset 0 2px 3px rgba(255, 255, 255, 1),
+    inset 0 -2px 3px rgba(110, 65, 8, 0.65);
 }
 
 .btn-gold-pill-light:hover,
 .btn-wood-gold:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.04);
-  border-color: #E8BF6E;
+  transform: translateY(-2.5px) scale(1.012);
+  filter: brightness(1.05);
+  border-color: #FFFFFF;
   box-shadow: 
-    0 0 0 1px #9A6017,
-    0 8px 24px -2px rgba(184, 126, 34, 0.45),
-    0 0 12px rgba(248, 217, 136, 0.35),
-    inset 0 1px 3px rgba(255, 255, 255, 1),
-    inset 0 -1.5px 3px rgba(184, 134, 45, 0.45);
+    0 0 0 1px #965B0A,
+    0 0 0 3px #FFECA0,
+    0 0 0 4.5px #633904,
+    0 0 0 6px #FFF7D2,
+    0 12px 28px -2px rgba(214, 158, 51, 0.55),
+    0 0 22px rgba(255, 240, 170, 0.5),
+    inset 0 2px 3px rgba(255, 255, 255, 1),
+    inset 0 -2px 3px rgba(184, 134, 45, 0.55);
 }
 
 .btn-gold-pill-dark:hover {
-  transform: translateY(-2px);
-  border-color: #FFDE8A;
+  transform: translateY(-2.5px) scale(1.012);
+  border-color: #FFFFFF;
   box-shadow: 
-    0 0 0 1px #8A5515,
-    0 8px 24px -2px rgba(0, 0, 0, 0.6),
-    0 0 16px rgba(229, 178, 93, 0.45),
-    inset 0 1px 2px rgba(255, 240, 180, 0.7),
-    inset 0 -1.5px 3px rgba(0, 0, 0, 0.9);
+    0 0 0 1px #8A5208,
+    0 0 0 3px #FFEFA8,
+    0 0 0 4.5px #5C3203,
+    0 0 0 6px #FFF7D2,
+    0 12px 32px -2px rgba(0, 0, 0, 0.75),
+    0 0 26px rgba(240, 190, 100, 0.55),
+    inset 0 2px 3px rgba(255, 240, 180, 0.9),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.95);
 }
 
 /* Active Pressed States */
@@ -195,9 +266,10 @@ h1, h2, h3, h4, .font-serif, .font-brand {
 .btn-gold-pill-dark:active {
   transform: translateY(0px) scale(0.985);
   box-shadow: 
-    0 0 0 1px #78480F,
-    0 2px 6px rgba(0, 0, 0, 0.35),
-    inset 0 1px 3px rgba(0, 0, 0, 0.3);
+    0 0 0 1px #744304,
+    0 0 0 2px #E8B44A,
+    0 3px 8px rgba(0, 0, 0, 0.4),
+    inset 0 1px 4px rgba(0, 0, 0, 0.35);
 }
 
 /* WhatsApp pulse animation */
